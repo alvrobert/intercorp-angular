@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <span class="h3">Listado de Clientes</span>
+            <button class="btn btn-dark btn-lg float-right" routerLink="/create-client">Agregar</button>
+            <h5 style="margin-top: 30px;" *ngIf="clients.length == 0">No hay registros para mostrar</h5>
+            <table *ngIf="clients.length > 0" class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Fecha de Nacimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let client of clients">
+                        <td>{{ client.name }}</td>
+                        <td>{{ client.lastName }}</td>
+                        <td>{{ client.age }}</td>
+                        <td>{{ client.dateBirth }}</td>
+                        <td><i class="fas fa-edit fa-lg text-info mr-2" [routerLink]="['/edit-client/', client.id]"></i>
+                            <i (click)="deleteClient(client.id)" class="fas fa-trash-alt fa-lg text-danger"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
